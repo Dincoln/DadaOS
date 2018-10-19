@@ -11,9 +11,11 @@
 		827B6F8A20A935C500606FD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 827B6F8920A935C500606FD3 /* Assets.xcassets */; };
 		827B6F8D20A935C500606FD3 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 827B6F8B20A935C500606FD3 /* MainMenu.xib */; };
 		827B6F9020A935C500606FD3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 827B6F8F20A935C500606FD3 /* main.m */; };
+		C2BD55ECBAC4996D467D9595 /* libPods-DataOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A4B2C17F2B8BCA86F75F3AD /* libPods-DataOS.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7A4B2C17F2B8BCA86F75F3AD /* libPods-DataOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DataOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		827B6F8320A935C300606FD3 /* DataOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DataOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		827B6F8620A935C300606FD3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		827B6F8720A935C300606FD3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -22,6 +24,8 @@
 		827B6F8E20A935C500606FD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		827B6F8F20A935C500606FD3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		827B6F9120A935C500606FD3 /* DataOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DataOS.entitlements; sourceTree = "<group>"; };
+		98F984A03B9E5BBDA7AADB42 /* Pods-DataOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DataOS.release.xcconfig"; path = "Target Support Files/Pods-DataOS/Pods-DataOS.release.xcconfig"; sourceTree = "<group>"; };
+		D2B9546AE571427EB55E673F /* Pods-DataOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DataOS.debug.xcconfig"; path = "Target Support Files/Pods-DataOS/Pods-DataOS.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +33,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2BD55ECBAC4996D467D9595 /* libPods-DataOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		22AF07C88C28406FCDE76A54 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7A4B2C17F2B8BCA86F75F3AD /* libPods-DataOS.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		81E5507677C03599A4D472B5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D2B9546AE571427EB55E673F /* Pods-DataOS.debug.xcconfig */,
+				98F984A03B9E5BBDA7AADB42 /* Pods-DataOS.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		827B6F7A20A935C300606FD3 = {
 			isa = PBXGroup;
 			children = (
 				827B6F8520A935C300606FD3 /* DataOS */,
 				827B6F8420A935C300606FD3 /* Products */,
+				81E5507677C03599A4D472B5 /* Pods */,
+				22AF07C88C28406FCDE76A54 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -72,9 +97,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 827B6F9420A935C500606FD3 /* Build configuration list for PBXNativeTarget "DataOS" */;
 			buildPhases = (
+				BDAF2F4243950EC3F2563C8E /* [CP] Check Pods Manifest.lock */,
 				827B6F7F20A935C300606FD3 /* Sources */,
 				827B6F8020A935C300606FD3 /* Frameworks */,
 				827B6F8120A935C300606FD3 /* Resources */,
+				B9BEFEA579FF0BE28417B01C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -96,6 +123,11 @@
 				TargetAttributes = {
 					827B6F8220A935C300606FD3 = {
 						CreatedOnToolsVersion = 9.3;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -128,6 +160,53 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B9BEFEA579FF0BE28417B01C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-DataOS/Pods-DataOS-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/MASShortcut/MASShortcut.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MASShortcut.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DataOS/Pods-DataOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BDAF2F4243950EC3F2563C8E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DataOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		827B6F7F20A935C300606FD3 /* Sources */ = {
@@ -264,6 +343,7 @@
 		};
 		827B6F9520A935C500606FD3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D2B9546AE571427EB55E673F /* Pods-DataOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = DataOS/DataOS.entitlements;
@@ -275,13 +355,14 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Dincoln.DataOS;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Dincoln.Data;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
 		827B6F9620A935C500606FD3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 98F984A03B9E5BBDA7AADB42 /* Pods-DataOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = DataOS/DataOS.entitlements;
@@ -293,7 +374,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Dincoln.DataOS;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Dincoln.Data;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
