@@ -8,10 +8,9 @@
 
 #import "AppDelegate.h"
 #import <MASShortcut/Shortcut.h>
+#import "MenuItem.h"
 @interface AppDelegate ()
 @property (nonatomic, strong) NSStatusItem *item;
-
-@property (nonatomic, strong) NSMenuItem *menuItem;
 
 @property (nonatomic, strong) NSMutableArray<NSMenuItem *> *menuItemArr;
 
@@ -34,7 +33,6 @@
                                    weakSelf.isShow = !weakSelf.isShow;
                                    if (!weakSelf.isShow) {
                                        self.item.title = @"";
-                                       self.menuItem.title = @"";
                                    }
                                }];
     
@@ -47,8 +45,20 @@
     self.item = [NSStatusBar.systemStatusBar statusItemWithLength:NSVariableStatusItemLength];
     self.item.title = @"";
     self.item.menu = self.menu;
+    
+    MenuItem *menu1 = [[MenuItem alloc] initWithItem:[[Item alloc] initWithName:@"" code:@"sh000001"]];
+    MenuItem *menu2 = [[MenuItem alloc] initWithItem:[[Item alloc] initWithName:@"" code:@"sh601318"]];
+    MenuItem *menu3 = [[MenuItem alloc] initWithItem:[[Item alloc] initWithName:@"" code:@"sz000961"]];
+    MenuItem *menu4 = [[MenuItem alloc] initWithItem:[[Item alloc] initWithName:@"" code:@"sh600623"]];
+    NSMenuItem *menu5 = [[NSMenuItem alloc] initWithTitle:@"退出" action:@selector(close:) keyEquivalent:@""];
+
+    self.item.menu.itemArray = @[menu1, menu2, menu3, menu4, menu5];
+    self.index = 0;
     NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:3 repeats:YES block:^(NSTimer * _Nonnull timer) {
-        [self action];
+        if (weakSelf.isShow) {
+            self.item.title = self.item.menu.itemArray[self.index%(self.item.menu.itemArray.count - 1)].title;
+        }
+        self.index ++;
     }];
     [timer fire];
 }
@@ -57,60 +67,6 @@
 }
 
 
-- (void)action {
-    
-    NSArray<NSString *> *array = @[@"sh000001", @"sh601318", @"sz000961", @"sh600623"];
-    NSString *code;
-    if (self.index % 4 == 0) {
-        code = array[0];
-    }else if(self.index % 4 == 1){
-        code = array[1];
-    }else if (self.index % 4 == 2){
-        code = array[2];
-    }else if (self.index % 4 == 3){
-        code = array[3];
-    }
-    NSError *err;
-    NSString *str = [NSString stringWithContentsOfURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://hq.sinajs.cn/list=%@",code]] encoding:0x80000632 error:&err];
-    NSArray<NSString *> *arr = [str componentsSeparatedByString:@","];
-    if (arr.count>3) {
-        NSString *str = @"";
-        if ((arr[3].doubleValue - arr[2].doubleValue) >0) {
-            str = @"a";
-        }else{
-            str = @"b";
-        }
-        if (self.isShow) {
-            self.item.title = [[NSString stringWithFormat:@"%0.2lf %@%0.2lf %@%0.2lf",arr[3].doubleValue, str, fabs(arr[3].doubleValue - arr[2].doubleValue), str, fabs((arr[3].doubleValue - arr[2].doubleValue)/arr[2].doubleValue *100.f)] stringByReplacingOccurrencesOfString:@"." withString:@"c"];
-            if (self.index%4 == 0) {
-                self.menuItem.title = self.item.title;
-            }
-        }else{
-            self.item.title = @"";
-            if (self.index%4 == 0) {
-                self.menuItem.title = @"";
-            }
-        }
-    }
-    self.index ++;
-}
-
-
-
-
-
-
-- (NSMenuItem *)menuItem{
-    if (!_menuItem) {
-        _menuItem = [[NSMenuItem alloc] init];
-        [self.item.menu insertItem:_menuItem atIndex:0];
-    }
-    return _menuItem;
-}
-
-- (void)applicationWillTerminate:(NSNotification *)aNotification {
-    // Insert code here to tear down your application
-}
 
 
 @end

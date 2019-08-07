@@ -11,6 +11,8 @@
 		827B6F8A20A935C500606FD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 827B6F8920A935C500606FD3 /* Assets.xcassets */; };
 		827B6F8D20A935C500606FD3 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 827B6F8B20A935C500606FD3 /* MainMenu.xib */; };
 		827B6F9020A935C500606FD3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 827B6F8F20A935C500606FD3 /* main.m */; };
+		82D0B68222FA790800C55A80 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D0B68122FA790800C55A80 /* Item.m */; };
+		82D0B68522FA7C1F00C55A80 /* MenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D0B68422FA7C1F00C55A80 /* MenuItem.m */; };
 		C2BD55ECBAC4996D467D9595 /* libPods-DataOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A4B2C17F2B8BCA86F75F3AD /* libPods-DataOS.a */; };
 /* End PBXBuildFile section */
 
@@ -24,6 +26,10 @@
 		827B6F8E20A935C500606FD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		827B6F8F20A935C500606FD3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		827B6F9120A935C500606FD3 /* DataOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DataOS.entitlements; sourceTree = "<group>"; };
+		82D0B68022FA790800C55A80 /* Item.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
+		82D0B68122FA790800C55A80 /* Item.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
+		82D0B68322FA7C1F00C55A80 /* MenuItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuItem.h; sourceTree = "<group>"; };
+		82D0B68422FA7C1F00C55A80 /* MenuItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MenuItem.m; sourceTree = "<group>"; };
 		98F984A03B9E5BBDA7AADB42 /* Pods-DataOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DataOS.release.xcconfig"; path = "Target Support Files/Pods-DataOS/Pods-DataOS.release.xcconfig"; sourceTree = "<group>"; };
 		D2B9546AE571427EB55E673F /* Pods-DataOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DataOS.debug.xcconfig"; path = "Target Support Files/Pods-DataOS/Pods-DataOS.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -54,7 +60,6 @@
 				D2B9546AE571427EB55E673F /* Pods-DataOS.debug.xcconfig */,
 				98F984A03B9E5BBDA7AADB42 /* Pods-DataOS.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -81,6 +86,10 @@
 			children = (
 				827B6F8620A935C300606FD3 /* AppDelegate.h */,
 				827B6F8720A935C300606FD3 /* AppDelegate.m */,
+				82D0B68022FA790800C55A80 /* Item.h */,
+				82D0B68122FA790800C55A80 /* Item.m */,
+				82D0B68322FA7C1F00C55A80 /* MenuItem.h */,
+				82D0B68422FA7C1F00C55A80 /* MenuItem.m */,
 				827B6F8920A935C500606FD3 /* Assets.xcassets */,
 				827B6F8B20A935C500606FD3 /* MainMenu.xib */,
 				827B6F8E20A935C500606FD3 /* Info.plist */,
@@ -213,6 +222,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82D0B68222FA790800C55A80 /* Item.m in Sources */,
+				82D0B68522FA7C1F00C55A80 /* MenuItem.m in Sources */,
 				827B6F9020A935C500606FD3 /* main.m in Sources */,
 				827B6F8820A935C300606FD3 /* AppDelegate.m in Sources */,
 			);
@@ -349,7 +360,7 @@
 				CODE_SIGN_ENTITLEMENTS = DataOS/DataOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = LEMAWCFK3X;
+				DEVELOPMENT_TEAM = 25G822CN7K;
 				INFOPLIST_FILE = DataOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -368,7 +379,7 @@
 				CODE_SIGN_ENTITLEMENTS = DataOS/DataOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = LEMAWCFK3X;
+				DEVELOPMENT_TEAM = 25G822CN7K;
 				INFOPLIST_FILE = DataOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
