@@ -21,6 +21,7 @@
         self.code = code;
         self.timer = [NSTimer scheduledTimerWithTimeInterval:1.5 target:self selector:@selector(getValue) userInfo:nil repeats:YES];
         [self.timer fire];
+        [NSRunLoop.currentRunLoop addTimer:self.timer forMode:NSRunLoopCommonModes];
         
     }
     return self;

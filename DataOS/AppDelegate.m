@@ -42,17 +42,14 @@
                                                                  }];
     
     self.index = 0;
+    self.isShow = YES;
     self.item = [NSStatusBar.systemStatusBar statusItemWithLength:NSVariableStatusItemLength];
     self.item.title = @"";
     self.item.menu = self.menu;
     
-    MenuItem *menu1 = [[MenuItem alloc] initWithItem:[[Item alloc] initWithName:@"" code:@"sh000001"]];
-    MenuItem *menu2 = [[MenuItem alloc] initWithItem:[[Item alloc] initWithName:@"" code:@"sh601318"]];
-    MenuItem *menu3 = [[MenuItem alloc] initWithItem:[[Item alloc] initWithName:@"" code:@"sz000961"]];
-    MenuItem *menu4 = [[MenuItem alloc] initWithItem:[[Item alloc] initWithName:@"" code:@"sh600623"]];
-    NSMenuItem *menu5 = [[NSMenuItem alloc] initWithTitle:@"退出" action:@selector(close:) keyEquivalent:@""];
-
-    self.item.menu.itemArray = @[menu1, menu2, menu3, menu4, menu5];
+    NSArray<NSString *> *arr = @[@"sh000001", @"sz000063", @"sz000961", @"sh600623", @"sh601228", @"sh600750"];
+    NSArray<NSMenuItem *> *items = [self itemsWithArr:arr];
+    self.item.menu.itemArray = items;
     self.index = 0;
     NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:3 repeats:YES block:^(NSTimer * _Nonnull timer) {
         if (weakSelf.isShow) {
@@ -64,6 +61,16 @@
 }
 - (IBAction)close:(NSMenuItem *)sender {
     [[NSApplication sharedApplication] terminate:self];
+}
+
+- (NSMutableArray<NSMenuItem *> *)itemsWithArr:(NSArray<NSString *> *)arr {
+    
+    NSMutableArray<NSMenuItem *> *items = [NSMutableArray array];
+    for (NSString *str in arr) {
+       [items addObject: [[MenuItem alloc] initWithItem:[[Item alloc] initWithName:@"" code:str]]];
+    }
+    [items addObject:[[NSMenuItem alloc] initWithTitle:@"退出" action:@selector(close:) keyEquivalent:@""]];
+    return items;
 }
 
 
